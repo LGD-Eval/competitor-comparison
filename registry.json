@@ -1,0 +1,86 @@
+{
+  "schema": "lgd-ecosystem/registry/0",
+  "updated_at": "2026-11-09",
+  "canonical_index": "https://zhaoxinghua09-cell.github.io/lgd-skills-index/",
+  "inclusion_threshold": {
+    "evidence_grade": "E2+",
+    "critical_findings": 0,
+    "redteam_families": "6/6",
+    "fixes_open": 0
+  },
+  "disclaimer": "E2 only (author-reproducible). No E3 external replication yet; NV is not presented as pass.",
+  "assets": [
+    {
+      "asset": "SkillGate",
+      "type": "gate",
+      "version": "1.0.x",
+      "evidence_grade": "E2",
+      "checks": "46 tests; adversarial matrix 6/6 after F1-F3 fixes",
+      "evidence_url": "https://github.com/zhaoxinghua09-cell/skillgate",
+      "status": "listed"
+    },
+    {
+      "asset": "skill-scout",
+      "type": "discovery",
+      "version": "main",
+      "evidence_grade": "E2",
+      "checks": "selftest PASS",
+      "evidence_url": "https://github.com/LGD-Eval/skill-scout",
+      "status": "listed"
+    },
+    {
+      "asset": "LGD-Eval comparison page",
+      "type": "evaluation",
+      "version": "2026-11-08",
+      "evidence_grade": "E2",
+      "checks": "5-tool same-sample comparison; all links 200",
+      "evidence_url": "https://lgd-eval.github.io/competitor-comparison/",
+      "status": "listed"
+    },
+    {
+      "asset": "R04 demo v2",
+      "type": "demo",
+      "version": "v2",
+      "evidence_grade": "E2",
+      "checks": "12/12 boundary cases; CDP public-URL test",
+      "evidence_url": "https://zhaoxinghua09-cell.github.io/fg-tida-r04-contrib/R04_demo_5values_v2.html",
+      "status": "listed"
+    },
+    {
+      "asset": "lgd-audit",
+      "type": "audit",
+      "version": "1.0.3",
+      "evidence_grade": "E2",
+      "checks": "ClawHub security=clean (card.missing optional)",
+      "evidence_url": "https://clawhub.ai/zhaoxinghua09-cell/skills/lgd-audit",
+      "status": "listed"
+    },
+    {
+      "asset": "lgd-evo",
+      "type": "evolution",
+      "version": "1.0.3",
+      "evidence_grade": "E2",
+      "checks": "ClawHub security=clean (card.missing optional)",
+      "evidence_url": "https://clawhub.ai/zhaoxinghua09-cell/skills/lgd-evo",
+      "status": "listed"
+    },
+    {
+      "asset": "evaluation-protocol",
+      "type": "protocol",
+      "version": "main",
+      "evidence_grade": "E2",
+      "checks": "worked examples 4/4",
+      "evidence_url": "https://github.com/LGD-Eval/evaluation-protocol",
+      "status": "listed"
+    },
+    {
+      "asset": "skill-audit",
+      "type": "audit-tooling",
+      "version": "main",
+      "evidence_grade": "E2",
+      "checks": "adversarial regression 12/12",
+      "evidence_url": "https://github.com/LGD-Eval/skill-audit",
+      "status": "listed"
+    }
+  ]
+}
