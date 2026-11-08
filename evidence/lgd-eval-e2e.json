@@ -1,0 +1,24 @@
+{
+ "clean": {
+  "eval_rc": 0,
+  "verify_rc": 0,
+  "assessment_outcome": "PASS",
+  "verdict": "PASS",
+  "safety_clear": true,
+  "execution_decision": "NOT_APPLICABLE",
+  "evaluator_tree_sha256": "sha256:140a077f945edb44cedd02b568f5ef7ba4d38b5277f572128cec94f7c60f0326",
+  "expected": "PASS",
+  "ok": true
+ },
+ "poisoned": {
+  "eval_rc": 0,
+  "verify_rc": 0,
+  "assessment_outcome": "FAIL",
+  "verdict": "FAIL",
+  "safety_clear": false,
+  "execution_decision": "NOT_APPLICABLE",
+  "evaluator_tree_sha256": "sha256:140a077f945edb44cedd02b568f5ef7ba4d38b5277f572128cec94f7c60f0326",
+  "expected": "FAIL",
+  "ok": true
+ }
+}
