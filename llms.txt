@@ -12,6 +12,9 @@ and NV marked honestly.
 
 ## Key resources
 
+- **Canonical skills registry (187 packages):** https://zhaoxinghua09-cell.github.io/lgd-skills-index/
+- **Registry v0 (evaluated assets):** https://lgd-eval.github.io/competitor-comparison/registry.json
+
 - Comparison page: https://lgd-eval.github.io/competitor-comparison/
 - R04 five-value validator (public, runnable): https://zhaoxinghua09-cell.github.io/fg-tida-r04-contrib/R04_demo_5values_v2.html
 - SkillGate (MIT gate): https://github.com/zhaoxinghua09-cell/skillgate
