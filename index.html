@@ -39,8 +39,8 @@
     对照组：<code>iso14971-risk-matrix</code>（干净技能，无危险调用）。</p>
     <div class="kpi">
       <div><b>1</b><span class="muted">个负对照样本</span></div>
-      <div><b>4</b><span class="muted">家工具对照</span></div>
-      <div><b>2</b><span class="muted">家真跑（其余文档/NV）</span></div>
+      <div><b>5</b><span class="muted">家工具对照</span></div>
+      <div><b>3</b><span class="muted">家真跑（其余文档/NV）</span></div>
       <div><b>FAIL</b><span class="muted">我方 fail-closed 结论</span></div>
     </div>
   </div>
@@ -52,7 +52,7 @@
       <tbody>
         <tr><td>NVIDIA SkillSpector</td><td>2.12.0 · 本地 pip 安装真跑</td><td>34 / MEDIUM / CAUTION（含 HIGH 的 os.system）</td><td>❌ 不阻断</td><td><span class="chip ok">✅ 真跑</span></td></tr>
         <tr><td>Snyk Agent Scan</td><td>0.6.11 · pip 安装，headless 未出结果</td><td>无稳定 stdout；CI 需 <code>--dangerously-run-mcp-servers</code></td><td>NV</td><td><span class="chip nv">NV</span></td></tr>
-        <tr><td>Arize Phoenix</td><td>19.18.0 · 本地服务 + OTLP trace</td><td>可观测/评测平台；trace 入库成功</td><td>非门禁</td><td><span class="chip ok">✅ 真跑</span></td></tr>
+        <tr><td><b>SkillGate</b></td><td>v1.0.0 · 本地实跑（MIT）</td><td>干净 100/A+；负对照 <b>27/F</b>，4 条 CRITICAL</td><td>✅ exit code 1</td><td><span class="chip ok">✅ 真跑</span></td></tr>        <tr><td>Arize Phoenix</td><td>19.18.0 · 本地服务 + OTLP trace</td><td>可观测/评测平台；trace 入库成功</td><td>非门禁</td><td><span class="chip ok">✅ 真跑</span></td></tr>
         <tr><td>Cisco DefenseClaw</td><td>文档级（Apache-2.0 / Go）</td><td>CRITICAL/HIGH → 隔离 + 阻断；扫描失败 = rejected</td><td>✅（文档）</td><td><span class="chip warn">📄 文档</span></td></tr>
         <tr><td><b>LGD-Eval（本工具）</b></td><td>自包含 engine · 本地复跑</td><td><b>assessment_outcome = FAIL</b>；safety_clear=false；无 ALLOW</td><td>✅ fail-closed</td><td><span class="chip ok">✅ 真跑</span></td></tr>
       </tbody>
@@ -87,6 +87,7 @@ python work/eval-run/e2e_selfcontained.py
       <li><a href="https://pypi.org/project/snyk-agent-scan/">Snyk Agent Scan (PyPI)</a></li>
       <li><a href="https://cisco-ai-defense.github.io/defenseclaw/docs/scanning/">Cisco DefenseClaw · Scanning and admission</a></li>
       <li><a href="https://arize.com/phoenix/">Arize Phoenix</a></li>
+      <li><a href="https://github.com/zhaoxinghua09-cell/skillgate">SkillGate</a>（MIT，本地实跑证据）</li>
       <li>本地证据：<code>work/eval-run/skillspector/</code>、<code>work/eval-run/e2e-selfcontained.json</code>、<code>work/eval-run/phoenix/phoenix-ui.png</code></li>
     </ul>
   </div>
