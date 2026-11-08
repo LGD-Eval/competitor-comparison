@@ -1,0 +1,35 @@
+# LGD Eval — Agent Skill Trust & Evaluation
+
+> Independent, evidence-graded evaluation of AI agent skills. We publish reproducible
+> comparisons, fail-closed gate results, and public evaluation artifacts. Not affiliated
+> with any vendor.
+
+## What this site is
+
+Same-sample comparison of agent-skill scanners and gates (NVIDIA SkillSpector, Snyk Agent
+Scan, Cisco DefenseClaw, Arize Phoenix, SkillGate, LGD-Eval), with reproducible commands
+and NV marked honestly.
+
+## Key resources
+
+- Comparison page: https://lgd-eval.github.io/competitor-comparison/
+- R04 five-value validator (public, runnable): https://zhaoxinghua09-cell.github.io/fg-tida-r04-contrib/R04_demo_5values_v2.html
+- SkillGate (MIT gate): https://github.com/zhaoxinghua09-cell/skillgate
+- Evaluation account: https://github.com/LGD-Eval
+- Papers / DOIs: https://orcid.org/0009-0001-0512-1237
+- ClawHub publisher: https://clawhub.ai/zhaoxinghua09-cell
+
+## Evidence policy
+
+- E0–E4 evidence grades; NV never written as pass.
+- Fail-closed: missing evidence means not-passed.
+- Red-team families: dynamic execution, command execution, deserialization,
+  network exfiltration, prompt injection, clean control.
+
+## Contact
+
+Xinghua Zhao (Zhao, X.), ORCID 0009-0001-0512-1237.
+
+## Rights
+
+© 2026 Xinghua Zhao. All rights reserved. Personal capacity; no organizational affiliation.
